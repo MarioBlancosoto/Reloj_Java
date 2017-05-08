@@ -1,6 +1,8 @@
 
 package reloj;
 
+import java.time.LocalTime;
+
 
 public class Botonera {
     static boolean alarmmActive;
@@ -37,14 +39,17 @@ public class Botonera {
     /**
      * allow you to config the hour
      */
-    public static void plusHr(){
-        
+    public static void plusHr(LocalTime auxHr){
+      auxHr.plusHours(1);
+      Reloj.horaActual.plusHours(1);
+      Display.showHourMin();
+      
     }
     /**
      * Allow you to config the minutes of the clock
      */
-    public static void plusMin(){
-        
+    public static LocalTime plusMin(LocalTime auxMin){
+        return auxMin.plusMinutes(1);
     }
     /**
      * stops the alarm when pressed

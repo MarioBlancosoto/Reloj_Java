@@ -1,13 +1,13 @@
 
 package reloj;
 
+import java.time.LocalTime;
+
 public class Reloj {
 
-    
+    static LocalTime horaActual;
     public static void main(String[] args) {
-    Botonera boton = new  Botonera();
-    Altavoz alt = new Altavoz();
-    Display disp = new Display();
+   
     int select;
     do{
         select = Integer.parseInt("Elija la opción deseada ");
@@ -15,6 +15,10 @@ public class Reloj {
      switch(select){
          
          case 1:Botonera.configHr();
+         break;
+         case 2:Botonera.plusHr(horaActual);
+         break;
+         case 3:Botonera.plusMin(horaActual);
          break;
          
          
@@ -24,5 +28,6 @@ public class Reloj {
     
     
     }
+    
     
 }

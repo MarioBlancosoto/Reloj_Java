@@ -12,7 +12,8 @@ public class Display {
    
    
     public static void showHourMin(){
-        System.out.println(" muestra la hora actual");
+        System.out.println(Reloj.horaActual.getHour()+Reloj.horaActual.getHour());
+        
     }
    
     /**
