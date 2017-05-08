@@ -58,6 +58,8 @@ public class Botonera {
     public static void configHr(){
         
         Display.showLeds(true,false,true);
+        Display.showHourMin();
+        
         
     }
     /**
