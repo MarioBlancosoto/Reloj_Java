@@ -4,11 +4,13 @@ package reloj;
 
 public class Display {
    static  boolean ledClock;
-   static boolean ledAlarn;
+   static boolean ledAlarm;
    static boolean ledSet;
     /**
      * shows the current hour 
      */
+   
+   
     public static void showHourMin(){
         System.out.println(" muestra la hora actual");
     }
@@ -21,7 +23,11 @@ public class Display {
      * @param ledAlarma shows the icon for the clock's alarm
      * @alarm ledSet shows which icon is set for the config
      */
-    public static void showLeds(boolean ledClock,boolean ledAlarm,boolean ledSet){
+    public static void showLeds(boolean clock,boolean alarm,boolean set){
+        ledClock = clock;
+        ledAlarm = alarm;
+        ledSet = set;
+        
         
     }
     
