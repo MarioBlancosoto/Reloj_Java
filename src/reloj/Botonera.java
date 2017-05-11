@@ -2,13 +2,15 @@
 package reloj;
 
 import java.time.LocalTime;
+import javax.swing.JOptionPane;
 
 
 public class Botonera {
     static boolean alarmmActive;
     static boolean setHr;
     static boolean setAlarm;
-
+ 
+    
     /**
      * abstract buttons to allow you to config de alarm,hour etc...
      * @param showAlarmActive shows if the alarm is on or off
@@ -22,34 +24,43 @@ public class Botonera {
     }
 
     public Botonera() {
+        
     }
     
     /**
      * shows if the alarm is on
      */
     public static void arlamOn(){
+        Display.showLeds(true,false,false);
         
     }
     /**
      * shows if the alarm is off
      */
     public static void alarmOff(){
-        
+        Display.showLeds(false, false, false);
     }
     /**
      * allow you to config the hour
+     * @param auxHr
      */
-    public static void plusHr(LocalTime auxHr){
-      auxHr.plusHours(1);
-      Reloj.horaActual.plusHours(1);
+    public static void plusHr(){
+     
+     Reloj.horaActual = Reloj.horaActual.plusHours(1);
+     
       Display.showHourMin();
-      
+     
+
+
     }
     /**
      * Allow you to config the minutes of the clock
      */
-    public static LocalTime plusMin(LocalTime auxMin){
-        return auxMin.plusMinutes(1);
+    public static void plusMin(){
+      Reloj.horaActual  =   Reloj.horaActual.plusMinutes(1);
+        Display.showHourMin();
+        
+  
     }
     /**
      * stops the alarm when pressed
@@ -61,7 +72,7 @@ public class Botonera {
      * allow you to config the actual hour
      */
     public static void configHr(){
-        
+        Reloj.horaActual = LocalTime.of(Integer.parseInt(JOptionPane.showInputDialog("Introduzca la hora")),Integer.parseInt(JOptionPane.showInputDialog("Introduzca los minutos")));
         Display.showLeds(true,false,true);
         Display.showHourMin();
         
@@ -71,6 +82,7 @@ public class Botonera {
      * allow you to config the hour of the alarm 
      */
     public static void configAlarm(){
+        Reloj.horaAlarma = LocalTime.of(Integer.parseInt(JOptionPane.showInputDialog("Introduzca la hora de la alarma ")),Integer.parseInt(JOptionPane.showInputDialog("Introduzca los minutos de la alarma")));
         
     }
 }

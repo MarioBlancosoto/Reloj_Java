@@ -1,6 +1,8 @@
 
 package reloj;
 
+import java.time.LocalTime;
+
 
 public class Display {
    static  boolean ledClock;
@@ -12,7 +14,7 @@ public class Display {
    
    
     public static void showHourMin(){
-        System.out.println(Reloj.horaActual.getHour()+Reloj.horaActual.getHour());
+       System.out.println(Reloj.horaActual.getHour()+": "+Reloj.horaActual.getMinute());
         
     }
    
