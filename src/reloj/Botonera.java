@@ -43,7 +43,7 @@ public class Botonera {
     }
     /**
      * allow you to config the hour
-     * @param auxHr
+     * 
      */
     public static void plusHr(){
      
@@ -89,8 +89,8 @@ public class Botonera {
         
         
     }
-      public void pararAlarma(){
-      
-       tarea.cancel();
+      public static void pararAlarma(){
+       Reloj.timer.cancel();
+       
     }
 }
