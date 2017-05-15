@@ -19,6 +19,7 @@ public class Reloj {
             public void run() {
                 if (horaAlarma.getMinute() == LocalTime.now().getMinute() && horaAlarma.getHour() == LocalTime.now().getHour()) {
                     JOptionPane.showMessageDialog(null, "ALARMA!!!");
+                    Altavoz.playSound();
 
                 } else {
                     JOptionPane.showMessageDialog(null, "La hora Actual es : " + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute());
@@ -52,7 +53,8 @@ public class Reloj {
                 case 5:
                     Display.showHourMin();
                     break;
-                case 6:Botonera.pararAlarma();
+                case 6:
+                    Botonera.pararAlarma();
                     break;
             }
 
