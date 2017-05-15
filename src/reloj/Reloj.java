@@ -12,15 +12,17 @@ public class Reloj {
     static LocalTime horaActual;
     static LocalTime horaAlarma;
     static Timer timer ;
-    static TimerTask task;
+    static TimerTask tarea;
+    static boolean pararAlarma =true;
      
     
     public static void main(String[] args) {
-    task = new TimerTask() {
+    tarea = new TimerTask() {
         @Override
         public void run() {
-          if(horaAlarma.getMinute()==LocalTime.now().getMinute()){
+          if(horaAlarma.getMinute()==LocalTime.now().getMinute()&&horaAlarma.getHour()==LocalTime.now().getHour()){
               JOptionPane.showMessageDialog(null,"ALARMA!!!");
+           
           }else{
               JOptionPane.showMessageDialog(null,"La hora Actual es : " +LocalTime.now().getHour()+":"+LocalTime.now().getMinute());
           }
@@ -28,9 +30,9 @@ public class Reloj {
     };
     timer = new Timer();
     horaActual = LocalTime.now();
-    horaAlarma = LocalTime.of(3, 15);
+    horaAlarma = LocalTime.of(9, 30);
     int select;
-    timer.schedule(task,10, 10000);
+    timer.schedule(tarea,10, 10000);
     do{
         select = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduzca la opción Deseada \n 1. configurar Hora  \n 2. hora + "
                 + "\n 3.minutos +"));
@@ -43,9 +45,11 @@ public class Reloj {
          break;
          case 3:Botonera.plusMin();
          break;
-         case 4:Display.showHourMin();
+         case 4:Botonera.configAlarm();
          break;
-         
+         case 5:Display.showHourMin();
+         break;
+         case 6:
          
          
      }   
@@ -54,6 +58,7 @@ public class Reloj {
     timer.cancel();
     
     }
+  
 
     
     

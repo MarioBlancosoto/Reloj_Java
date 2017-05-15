@@ -3,6 +3,7 @@ package reloj;
 
 import java.time.LocalTime;
 import javax.swing.JOptionPane;
+import static reloj.Reloj.tarea;
 
 
 public class Botonera {
@@ -83,6 +84,13 @@ public class Botonera {
      */
     public static void configAlarm(){
         Reloj.horaAlarma = LocalTime.of(Integer.parseInt(JOptionPane.showInputDialog("Introduzca la hora de la alarma ")),Integer.parseInt(JOptionPane.showInputDialog("Introduzca los minutos de la alarma")));
+        Display.showLeds(false,false,true);
+        Display.showHourMin();
         
+        
+    }
+      public void pararAlarma(){
+      
+       tarea.cancel();
     }
 }
