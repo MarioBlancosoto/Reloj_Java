@@ -32,7 +32,7 @@ public class Botonera {
      * shows if the alarm is on
      */
     public static void arlamOn(){
-        Display.showLeds(true,false,false);
+        Display.showLeds(false,true,false);
         
     }
     /**
@@ -46,11 +46,14 @@ public class Botonera {
      * 
      */
     public static void plusHr(){
-     
+     if(Display.ledAlarm==true){
+      Reloj.horaAlarma = Reloj.horaAlarma.plusHours(1);
+      Display.showHourMin();
+     }else{
      Reloj.horaActual = Reloj.horaActual.plusHours(1);
      
       Display.showHourMin();
-     
+     }
 
 
     }
@@ -58,22 +61,27 @@ public class Botonera {
      * Allow you to config the minutes of the clock
      */
     public static void plusMin(){
+        if(Display.ledAlarm ==true){
+            Reloj.horaAlarma = Reloj.horaAlarma.plusMinutes(1);
+          
+        }else{
       Reloj.horaActual  =   Reloj.horaActual.plusMinutes(1);
-        Display.showHourMin();
-        
+      Display.showHourMin();
+        } 
   
     }
     /**
      * stops the alarm when pressed
      */
     public static void stopAlarm(){
-        
+        Reloj.timer.cancel();
+       
     }
     /**
      * allow you to config the actual hour
      */
     public static void configHr(){
-        Reloj.horaActual = LocalTime.of(Integer.parseInt(JOptionPane.showInputDialog("Introduzca la hora")),Integer.parseInt(JOptionPane.showInputDialog("Introduzca los minutos")));
+       
         Display.showLeds(true,false,true);
         Display.showHourMin();
         
@@ -83,14 +91,12 @@ public class Botonera {
      * allow you to config the hour of the alarm 
      */
     public static void configAlarm(){
-        Reloj.horaAlarma = LocalTime.of(Integer.parseInt(JOptionPane.showInputDialog("Introduzca la hora de la alarma ")),Integer.parseInt(JOptionPane.showInputDialog("Introduzca los minutos de la alarma")));
-        Display.showLeds(false,false,true);
+     
+        Display.showLeds(false,true,true);
+        
         Display.showHourMin();
         
         
     }
-      public static void pararAlarma(){
-       Reloj.timer.cancel();
-       
-    }
+  
 }

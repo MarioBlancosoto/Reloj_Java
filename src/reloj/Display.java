@@ -9,13 +9,16 @@ public class Display {
    static boolean ledAlarm;
    static boolean ledSet;
     /**
-     * shows the current hour 
+     * shows the current hour and the alarm current hour
      */
    
    
     public static void showHourMin(){
-       System.out.println(Reloj.horaActual.getHour()+": "+Reloj.horaActual.getMinute());
-        
+        if(Display.ledAlarm ==true){
+       System.out.println(Reloj.horaAlarma.getHour()+": "+Reloj.horaAlarma.getMinute());
+        }else{
+               System.out.println(Reloj.horaActual.getHour()+": "+Reloj.horaActual.getMinute()); 
+               }
     }
    
     /**
